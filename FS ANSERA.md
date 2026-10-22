@@ -1,6 +1,6 @@
 # ĐẶC TẢ USER STORIES & ACCEPTANCE CRITERIA (ANSERA PLATFORM)
 **Tác giả:** Duong Duc An  
-**Phiên bản:** 2.0 (Cập nhật mô hình Học thử Freemium 7 ngày - Không cần thẻ tín dụng)
+**Phiên bản:** 2.1 (Cập nhật mô hình Học thử 7 ngày liên kết thẻ quốc tế, giới hạn 50% thời lượng 3 bài đầu & Thu hồi toàn bộ khi hết hạn)
 
 ---
 
@@ -10,10 +10,10 @@
 | :--- | :---: | :--- | :--- |
 | **MSG-001** | Lỗi | Vui lòng nhập thông tin | Khi người dùng bỏ trống các trường thông tin bắt buộc và bấm gửi |
 | **MSG-002** | Cảnh báo | Tên người dùng đã tồn tại | Khi người dùng điền một username đã tồn tại trong hệ thống để đăng ký |
-| **MSG-003** | Lỗi | Thông tin chưa hợp lệ | Khi mật khẩu xác nhận không khớp, mật khẩu dưới 8 ký tự hoặc định dạng dữ liệu không hợp lệ |
+| **MSG-003** | Lỗi | Thông tin chưa hợp lệ | - Khi mật khẩu xác nhận không khớp hoặc dưới 8 ký tự<br>- Khi thông tin thẻ/email sai định dạng (thuật toán Luhn, CVV, ngày hết hạn trong quá khứ) |
 | **MSG-004** | Thông báo | Bạn đã đăng ký khóa học này rồi | Khi học viên click "Đăng ký ngay" đối với khóa học đã đăng ký/sở hữu trước đó |
 | **MSG-005** | Thông báo | Bạn đã hoàn thành thời lượng học thử của bài học này. Vui lòng mở khóa để xem tiếp toàn bộ nội dung. | Khi video bài học phát chạm mốc 50% thời lượng trong chế độ học thử |
-| **MSG-006** | Cảnh báo | Thời gian học thử 7 ngày của bạn cho khóa học này đã kết thúc. Vui lòng thanh toán để tiếp tục học tập. | Khi học viên truy cập vào khóa học sau khi thời hạn học thử 7 ngày đã kết thúc |
+| **MSG-006** | Cảnh báo | Thời gian học thử 7 ngày của bạn cho khóa học này đã kết thúc. Vui lòng thanh toán để tiếp tục học tập. | Khi học viên truy cập vào khóa học sau khi thời hạn học thử 7 ngày đã kết thúc hoặc bị hủy |
 
 ---
 
@@ -21,12 +21,12 @@
 
 | Mã Story | Nội dung User Story (As a / I want / So that) | Độ ưu tiên |
 | :--- | :--- | :---: |
-| **US-AUTH-001** | **As a** khách truy cập mới<br>**I want to** đăng ký tài khoản bằng username và mật khẩu<br>**So that** tôi sở hữu tài khoản định danh để học tập và lưu tiến trình | Must Have (P0) |
-| **US-CRS-002** | **As a** học viên đã đăng nhập<br>**I want to** xem chi tiết giáo trình, thông tin giảng viên và nhận diện các bài được học thử 50%<br>**So that** tôi hiểu rõ giá trị khóa học trước khi quyết định trải nghiệm hoặc mua | Must Have (P0) |
-| **US-ENR-003** | **As a** học viên chưa từng học thử khóa học<br>**I want to** kích hoạt trải nghiệm học thử miễn phí trong 7 ngày tức thì không cần thẻ tín dụng<br>**So that** tôi nhanh chóng vào xem bài giảng thực tế mà không lo lắng rủi ro tài chính | High (P1) |
-| **US-PLAY-004** | **As a** học viên trong thời gian học thử 7 ngày<br>**I want to** xem 50% thời lượng của 3 bài đầu tiên và nhận thông báo mở khóa khi chạm giới hạn<br>**So that** tôi trải nghiệm cách giảng dạy và đưa ra quyết định nâng cấp khóa học | Must Have (P0) |
-| **US-EXP-005** | **As a** hệ thống ANSERA<br>**I want to** tự động thu hồi quyền truy cập học thử khi quá hạn 7 ngày<br>**So that** bảo vệ bản quyền nội dung và thúc đẩy học viên chuyển đổi sang trả phí | High (P1) |
-| **US-PAY-006** | **As a** học viên muốn sở hữu khóa học<br>**I want to** thanh toán mở khóa toàn bộ khóa học trọn đời<br>**So that** tôi học không giới hạn 100% thời lượng, làm bài tập và nhận chứng chỉ tốt nghiệp | Must Have (P0) |
+| **US-AUTH-001** | **As a** khách truy cập mới<br>**I want to** đăng ký tài khoản bằng username và mật khẩu<br>**So that** tôi sở hữu tài khoản định danh để học tập và lưu tiến trình cá nhân | Must Have (P0) |
+| **US-CRS-002** | **As a** học viên đã đăng nhập<br>**I want to** xem chi tiết giáo trình, thông tin giảng viên và nhận diện các bài được học thử 50%<br>**So that** tôi hiểu rõ giá trị khóa học trước khi quyết định đăng ký trải nghiệm | Must Have (P0) |
+| **US-ENR-003** | **As a** học viên chưa từng học thử khóa học<br>**I want to** xem thông tin quyền lợi học thử 7 ngày và chuyển sang bước liên kết thẻ<br>**So that** tôi chuẩn bị kích hoạt gói trải nghiệm bài giảng thực tế | High (P1) |
+| **US-PAY-004** | **As a** học viên đăng ký trải nghiệm 7 ngày<br>**I want to** nhập thông tin thẻ thanh toán quốc tế (Visa/Mastercard) hợp lệ<br>**So that** hệ thống xác thực thẻ, kích hoạt gói học thử 7 ngày và thiết lập tự động gia hạn sau dùng thử | Must Have (P0) |
+| **US-PLAY-005** | **As a** học viên đang trong thời gian học thử 7 ngày<br>**I want to** xem tối đa 50% thời lượng của 3 bài đầu tiên và nhận thông báo mở khóa khi chạm giới hạn<br>**So that** tôi đánh giá chất lượng bài giảng và cân nhắc nâng cấp toàn bộ khóa học | Must Have (P0) |
+| **US-EXP-006** | **As a** hệ thống ANSERA<br>**I want to** tự động thu hồi toàn bộ quyền xem (kể cả 50% 3 bài đầu) khi hết hạn 7 ngày mà không gia hạn thành công<br>**So that** bảo vệ bản quyền khóa học và ngăn chặn hành vi học thử lặp lại | High (P1) |
 
 ---
 
@@ -56,7 +56,7 @@
 
 - **AC1: Đăng ký thành công với thông tin hợp lệ (Happy path)**
   - **Given** người dùng đang ở trang đăng ký tài khoản ANSERA và chưa đăng nhập
-  - **When** người dùng nhập `username` chưa tồn tại, `password` hợp lệ (tối thiểu 8 ký tự), `confirm password` trùng khớp 100%, và nhấn "Đăng ký"
+  - **When** người dùng nhập `username` chưa tồn tại trong hệ thống, `password` hợp lệ (tối thiểu 8 ký tự), `confirm password` trùng khớp 100%, và nhấn nút "Đăng ký"
   - **Then** hệ thống tạo tài khoản mới ở trạng thái kích hoạt thành công
   - **And** tự động đăng nhập và điều hướng người dùng về trang chủ với trạng thái đã xác thực.
 - **AC2: Bỏ trống một hoặc nhiều trường bắt buộc (Validation)**
@@ -86,8 +86,8 @@
 | :---: | --- | :---: | :---: | :---: | :---: | --- |
 | 1 | Card thông tin khóa học | Card | N/A | N/A | N/A | Tên khóa, đơn vị phát hành, xếp hạng rating, số lượng học viên, cấp độ. |
 | 2 | Video trailer giới thiệu | Media | N/A | N/A | N/A | Video ngắn giới thiệu tổng quan nội dung và mục tiêu khóa học. |
-| 3 | Button Học thử 7 ngày miễn phí | Button | N/A | N/A | N/A | CTA chính: Kích hoạt trải nghiệm 7 ngày không cần thẻ tín dụng (Dẫn tới US-ENR-003). |
-| 4 | Button Mua khóa học | Button | N/A | N/A | N/A | CTA phụ: Dẫn tới trang thanh toán mua đứt khóa học trọn đời (US-PAY-006). |
+| 3 | Button Trải nghiệm 7 ngày | Button | N/A | N/A | N/A | Nút CTA chính: Bật popup modal tóm tắt quyền lợi dùng thử 7 ngày (xem 50% 3 bài đầu) và chuyển sang bước liên kết thẻ (US-ENR-003 & US-PAY-004). |
+| 4 | Button Mua ngay | Button | N/A | N/A | N/A | Nút CTA phụ: Dẫn thẳng tới trang thanh toán mua đứt khóa học trọn đời. |
 | 5 | Huy hiệu [Học thử 50%] | Badge | N/A | N/A | N/A | Gắn cạnh Bài 1, Bài 2, Bài 3 trong danh mục bài học để người dùng nhận diện. |
 | 6 | Biểu tượng Khóa 🔒 | Icon | N/A | N/A | N/A | Gắn cạnh Bài 4, Bài 5 và toàn bộ bài tập/quizz (chỉ mở khi thanh toán trả phí). |
 | 7 | Accordion bài học | Accordion | N/A | N/A | N/A | Click vào mũi tên để xem mô tả tóm tắt nội dung bài học. |
@@ -98,7 +98,7 @@
   - **Given** học viên đã đăng nhập và xem trang chi tiết khóa học
   - **When** trang tải hoàn tất
   - **Then** hệ thống hiển thị đầy đủ thông tin khóa học, thông tin giảng viên, đánh giá
-  - **And** hiển thị huy hiệu `[Học thử 50%]` tại Bài 1, 2, 3 và biểu tượng 🔒 tại các bài từ số 4 trở đi kèm nút CTA *"Học thử 7 ngày miễn phí (Không cần thẻ)"*.
+  - **And** hiển thị huy hiệu `[Học thử 50%]` tại Bài 1, 2, 3 và biểu tượng 🔒 tại các bài từ số 4 trở đi kèm nút CTA *"Trải nghiệm 7 ngày"*.
 - **AC2: Mở rộng tóm tắt bài học qua Accordion (Interaction)**
   - **Given** học viên đang ở mục danh mục bài học
   - **When** học viên click vào biểu tượng mũi tên xổ xuống tại một bài học
@@ -110,54 +110,90 @@
 
 ---
 
-### 3.3. US-ENR-003: Kích hoạt trải nghiệm học thử 7 ngày không cần thẻ tín dụng
+### 3.3. US-ENR-003: Đăng ký trải nghiệm học thử miễn phí trong 7 ngày
 
-**As a** học viên đã đăng nhập và chưa từng học thử khóa học đang chọn  
-**I want to** kích hoạt gói học thử 7 ngày chỉ với 1 click mà không cần nhập thẻ thanh toán  
-**So that** tôi có thể trải nghiệm ngay chất lượng bài giảng một cách nhanh chóng, thuận tiện và an tâm tuyệt đối.
+**As a** học viên đã đăng nhập và chưa từng tham gia khóa học đang chọn  
+**I want to** mở xem thông tin chi tiết gói học thử 7 ngày và chuyển sang màn hình liên kết thẻ thanh toán  
+**So that** tôi hiểu rõ phạm vi học thử (50% của 3 bài đầu) và chính sách gia hạn trước khi cung cấp thông tin thẻ.
 
 #### Bảng mô tả thành phần giao diện
 
 | STT | Tên thành phần | Type | Được chỉnh sửa | Bắt buộc | Giá trị mặc định | Mô tả |
 | :---: | --- | :---: | :---: | :---: | :---: | --- |
-| 1 | Button Học thử 7 ngày miễn phí | Button | N/A | N/A | N/A | Nút kích hoạt trên trang chi tiết khóa học. |
-| 2 | Modal cam kết học thử | Modal | N/A | N/A | N/A | Hộp thoại thông báo: Quyền lợi xem 50% của 3 bài đầu trong 7 ngày, hoàn toàn miễn phí, không phát sinh chi phí ngầm. |
-| 3 | Button Bắt đầu học ngay | Button | N/A | N/A | N/A | Nằm trong modal. Click để xác nhận kích hoạt và vào thẳng Bài 1. |
-| 4 | Banner đếm ngược thời gian | Banner | N/A | N/A | N/A | Thanh thông báo trên đầu trình phát bài học hiển thị thời gian học thử còn lại (ví dụ: Còn 6 ngày 23 giờ). |
+| 1 | Button Trải nghiệm 7 ngày | Button | N/A | N/A | N/A | Click để mở popup modal tóm tắt quyền lợi và chính sách học thử. |
+| 2 | Modal cam kết học thử | Modal | N/A | N/A | N/A | Hộp thoại thông báo: Quyền lợi xem 50% thời lượng của 3 bài đầu trong 7 ngày, miễn phí 0đ trong 7 ngày đầu, tự động gia hạn sau 7 ngày nếu không hủy. |
+| 3 | Button Bắt đầu dùng thử miễn phí | Button | N/A | N/A | N/A | Nằm trong popup modal. Click để xác nhận và chuyển hướng sang màn hình nhập thông tin thẻ (US-PAY-004). |
 
 #### Acceptance Criteria
 
-- **AC1: Kích hoạt học thử thành công tức thì không cần thẻ (Happy path)**
-  - **Given** học viên đã đăng nhập và chưa từng tham gia học thử khóa học này
-  - **When** học viên nhấn nút *"Học thử 7 ngày miễn phí"* và xác nhận *"Bắt đầu học ngay"* trên Modal
-  - **Then** hệ thống lập tức chuyển trạng thái khóa học của học viên sang `TRIAL_ACTIVE`
-  - **And** kích hoạt đồng hồ đếm ngược 168 giờ (7 ngày), điều hướng trực tiếp học viên vào màn hình phát Bài học số 1 mà không yêu cầu bất kỳ thông tin thanh toán nào.
-- **AC2: Đã từng học thử khóa học này trước đây (Negative path)**
-  - **Given** học viên đã từng kích hoạt gói học thử 7 ngày cho khóa học này (đang diễn ra hoặc đã kết thúc)
+- **AC1: Hiển thị modal đặc quyền học thử và điều hướng sang trang liên kết thẻ (Happy path)**
+  - **Given** học viên đang xem chi tiết khóa học chưa từng học thử hoặc đăng ký
+  - **When** học viên nhấn nút "Trải nghiệm 7 ngày"
+  - **Then** hệ thống hiển thị modal thông báo đặc quyền học thử: thời hạn 7 ngày, quyền xem 50% thời lượng của 3 bài đầu, cam kết 0đ trong 7 ngày và chính sách tự động gia hạn
+  - **And** khi học viên click nút "Bắt đầu dùng thử miễn phí", hệ thống chuyển hướng đến màn hình điền thông tin thẻ thanh toán (US-PAY-004).
+- **AC2: Đã từng sử dụng gói học thử cho khóa học này (Negative path)**
+  - **Given** học viên đã từng kích hoạt gói học thử 7 ngày cho khóa học này trước đây (đang hoạt động hoặc đã hết hạn)
   - **When** học viên truy cập trang chi tiết khóa học
-  - **Then** nút *"Học thử 7 ngày miễn phí"* chuyển sang trạng thái disabled với dòng chữ *"Bạn đã dùng quyền học thử của khóa học này"*, chỉ hiển thị nút *"Mua khóa học ngay"*.
-- **AC3: Chưa đăng nhập bấm học thử (Edge case)**
-  - **Given** khách truy cập chưa đăng nhập đang xem khóa học
-  - **When** khách nhấn *"Học thử 7 ngày miễn phí"*
-  - **Then** hệ thống điều hướng đến trang Đăng nhập / Đăng ký kèm tham số lưu trang đích (`redirect_url`), sau khi đăng nhập thành công tự động kích hoạt học thử.
+  - **Then** nút "Trải nghiệm 7 ngày" bị vô hiệu hóa (disabled) kèm ghi chú giải thích quyền học thử chỉ áp dụng 1 lần duy nhất cho mỗi khóa học, chỉ hiển thị nút "Mua ngay".
 
 ---
 
-### 3.4. US-PLAY-004: Trải nghiệm học thử 50% thời lượng 3 bài đầu & Chặn tua (Seek Guard)
+### 3.4. US-PAY-004: Liên kết thẻ thanh toán quốc tế và thiết lập tự động gia hạn sau dùng thử
+
+**As a** học viên đăng ký trải nghiệm học thử 7 ngày  
+**I want to** nhập thông tin thẻ thanh toán quốc tế (Visa/Mastercard) hợp lệ  
+**So that** tôi hoàn tất xác thực 0đ, kích hoạt quyền học thử 7 ngày và hệ thống tự động gia hạn thuê bao sau 7 ngày nếu tôi không hủy bỏ.
+
+#### Bảng mô tả thành phần giao diện
+
+| STT | Tên thành phần | Type | Được chỉnh sửa | Bắt buộc | Giá trị mặc định | Mô tả |
+| :---: | --- | :---: | :---: | :---: | :---: | --- |
+| 1 | Trường Họ và tên trên thẻ | Text | Yes | Yes | N/A | - Nhập họ tên in trên thẻ (không chứa số hoặc ký tự đặc biệt).<br>- Bỏ trống: hiển thị **MSG-001**.<br>- Chứa số/ký tự sai: hiển thị **MSG-003**. |
+| 2 | Trường Email | Text | Yes | Yes | N/A | - Địa chỉ email nhận thông báo gia hạn và biên lai.<br>- Bỏ trống: hiển thị **MSG-001**.<br>- Sai cú pháp: hiển thị **MSG-003**. |
+| 3 | Droplist Quốc gia | List | Yes | Yes | N/A | Danh sách quốc gia cư trú / phát hành thẻ. |
+| 4 | Trường Số thẻ | Text | Yes | Yes | N/A | - Nhập dãy số thẻ Visa/Mastercard.<br>- Bỏ trống: hiển thị **MSG-001**.<br>- Sai cấu trúc hoặc sai thuật toán Luhn: hiển thị **MSG-003**. |
+| 5 | Trường Ngày hết hạn | Text | Yes | Yes | N/A | - Định dạng chuẩn placeholder `MM/YY` (thời điểm trong tương lai).<br>- Bỏ trống: hiển thị **MSG-001**.<br>- Sai định dạng hoặc ngày trong quá khứ: hiển thị **MSG-003**. |
+| 6 | Trường Mã bảo vệ (CVV) | Text | Yes | Yes | N/A | - 3 chữ số bảo mật ở mặt sau thẻ.<br>- Bỏ trống: hiển thị **MSG-001**.<br>- Không đúng 3 số: hiển thị **MSG-003**. |
+| 7 | Button Kích hoạt học thử 7 ngày | Button | N/A | N/A | N/A | Gửi dữ liệu xác thực thẻ qua cổng thanh toán, thiết lập subscription tự động gia hạn sau 7 ngày và kích hoạt khóa học sang trạng thái `TRIAL_ACTIVE`. |
+
+#### Acceptance Criteria
+
+- **AC1: Xác thực thẻ thành công và tạo subscription tự động gia hạn (Happy path)**
+  - **Given** học viên đang ở màn hình điền thông tin thẻ của gói học thử
+  - **When** học viên nhập đầy đủ: Họ tên trên thẻ, Email hợp lệ, Quốc gia, Số thẻ Visa/Mastercard hợp lệ, Ngày hết hạn hợp lệ (MM/YY trong tương lai), CVV hợp lệ (3 số), và nhấn "Kích hoạt học thử 7 ngày"
+  - **Then** cổng thanh toán xác thực thẻ thành công (thực hiện pre-authorization 0đ), mã hóa an toàn (tokenization) thông tin thẻ và hệ thống khởi tạo lịch trình tự động gia hạn trừ tiền sau 168 giờ (7 ngày)
+  - **And** trạng thái khóa học của học viên chuyển sang `TRIAL_ACTIVE`, kích hoạt đồng hồ đếm ngược 7 ngày, gửi email xác nhận và điều hướng học viên vào Bài học số 1 (US-PLAY-005).
+- **AC2: Bỏ trống một hoặc nhiều trường thông tin thanh toán (Validation)**
+  - **Given** học viên đang ở màn hình thanh toán
+  - **When** học viên để trống bất kỳ trường nào trong các trường bắt buộc và nhấn gửi
+  - **Then** hệ thống chặn gửi dữ liệu và hiển thị thông báo lỗi `MSG-001`: *"Vui lòng nhập thông tin"* tại các trường bị bỏ trống.
+- **AC3: Nhập sai định dạng dữ liệu hoặc thông tin thẻ không hợp lệ (Negative path)**
+  - **Given** học viên đang ở màn hình thanh toán
+  - **When** học viên nhập email sai cú pháp, họ tên chứa số/ký tự đặc biệt, số thẻ sai thuật toán Luhn hoặc ngày hết hạn trong quá khứ và bấm gửi
+  - **Then** hệ thống chặn gửi dữ liệu và hiển thị thông báo lỗi `MSG-003`: *"Thông tin chưa hợp lệ"*.
+- **AC4: Thẻ bị từ chối từ ngân hàng phát hành (Negative path / Gateway Decline)**
+  - **Given** thông tin thẻ đúng định dạng nhưng thẻ bị khóa, không hỗ trợ giao dịch online hoặc không đủ điều kiện xác thực từ ngân hàng
+  - **When** học viên gửi yêu cầu xác thực
+  - **Then** cổng thanh toán trả về lỗi, hệ thống không tạo subscription và hiển thị thông báo hướng dẫn học viên kiểm tra lại tình trạng thẻ hoặc sử dụng thẻ khác.
+
+---
+
+### 3.5. US-PLAY-005: Trải nghiệm học thử 50% thời lượng 3 bài đầu & Chặn tua (Seek Guard)
 
 **As a** học viên đang trong thời gian học thử 7 ngày  
 **I want to** xem được 50% thời lượng của 3 bài đầu tiên và hiển thị Paywall khi chạm giới hạn  
-**So that** tôi cảm nhận được giá trị kiến thức thực tế và quyết định nâng cấp gói trả phí.
+**So that** tôi cảm nhận được chất lượng giảng dạy và quyết định duy trì gói trả phí hoặc mua khóa học.
 
 #### Bảng mô tả thành phần giao diện
 
 | STT | Tên thành phần | Type | Được chỉnh sửa | Bắt buộc | Giá trị mặc định | Mô tả |
 | :---: | --- | :---: | :---: | :---: | :---: | --- |
 | 1 | Khung trình phát video | Video | N/A | N/A | N/A | Phát video bài giảng với các nút điều khiển chuẩn. |
-| 2 | Thanh tiến trình tua (Seek-bar) | Slider | Yes | N/A | 00:00 | Được phân tách trực quan: 50% đầu có màu nổi bật (cho phép phát), 50% sau bị mờ kèm vạch ngăn ranh giới học thử. |
-| 3 | Paywall Modal Overlay | Modal | N/A | N/A | N/A | Lớp phủ bật lên khi video đạt 50% hoặc click bài bị khóa, hiển thị ưu đãi và các tính năng mở rộng khi mua khóa học. |
-| 4 | Button Mở khóa toàn bộ khóa học | Button | N/A | N/A | N/A | Nút CTA chính trên Paywall Modal dẫn tới màn hình thanh toán. |
-| 5 | Button Xem lại đoạn học thử | Button | N/A | N/A | N/A | Nút phụ trên Paywall Modal cho phép tua lại video về mốc 00:00 để nghe lại. |
+| 2 | Thanh tiến trình tua (Seek-bar) | Slider | Yes | N/A | 00:00 | Phân tách trực quan: 50% đầu có màu xanh (cho phép phát), 50% sau bị mờ xám sọc chéo kèm vạch phân chia ranh giới học thử. |
+| 3 | Banner đếm ngược thời gian | Banner | N/A | N/A | N/A | Dải thông báo trên đầu trình phát hiển thị thời gian học thử còn lại (ví dụ: Còn 5 ngày 14 giờ) kèm lời nhắc ngày tự động gia hạn. |
+| 4 | Paywall Modal Overlay | Modal | N/A | N/A | N/A | Lớp phủ bật lên khi video đạt 50% hoặc khi click bài bị khóa, hiển thị ưu đãi và các tính năng mở khóa toàn bộ. |
+| 5 | Button Mở khóa toàn bộ khóa học | Button | N/A | N/A | N/A | Nút CTA chính trên Paywall Modal dẫn tới xác nhận mở khóa ngay lập tức. |
+| 6 | Button Xem lại đoạn học thử | Button | N/A | N/A | N/A | Nút phụ trên Paywall Modal cho phép tua lại video về mốc 00:00 để học lại phần 50% miễn phí. |
 
 #### Acceptance Criteria
 
@@ -180,65 +216,32 @@
 
 ---
 
-### 3.5. US-EXP-005: Tự động hết hạn học thử sau 7 ngày & Thu hồi quyền truy cập
+### 3.6. US-EXP-006: Tự động hết hạn học thử sau 7 ngày & Thu hồi toàn bộ quyền truy cập
 
 **As a** hệ thống ANSERA  
-**I want to** tự động chuyển trạng thái hết hạn và khóa toàn bộ nội dung khi quá thời hạn 7 ngày học thử  
-**So that** đảm bảo bảo mật quyền lợi nội dung và thúc đẩy học viên thanh toán để tiếp tục học tập.
+**I want to** tự động chuyển trạng thái sang hết hạn và khóa toàn bộ nội dung (kể cả 50% của 3 bài đầu) khi hết hạn 7 ngày mà không thanh toán/gia hạn thành công  
+**So that** bảo đảm bản quyền nội dung, ngăn chặn trục lợi học thử và thúc đẩy người dùng thanh toán.
 
 #### Bảng mô tả thành phần giao diện
 
 | STT | Tên thành phần | Type | Được chỉnh sửa | Bắt buộc | Giá trị mặc định | Mô tả |
 | :---: | --- | :---: | :---: | :---: | :---: | --- |
 | 1 | Banner thông báo hết hạn | Banner | N/A | N/A | N/A | Banner cảnh báo hiển thị trên đầu khóa học: *"Thời gian học thử 7 ngày đã kết thúc"*. |
-| 2 | Biểu tượng Khóa 🔒 toàn bộ | Icon | N/A | N/A | N/A | Toàn bộ danh mục bài học (kể cả Bài 1, 2, 3) đều chuyển sang biểu tượng khóa 🔒. |
-| 3 | Button Mua khóa học để tiếp tục | Button | N/A | N/A | N/A | CTA duy nhất trên giao diện dẫn tới thanh toán mua khóa học. |
+| 2 | Biểu tượng Khóa 🔒 toàn bộ | Icon | N/A | N/A | N/A | Toàn bộ danh mục bài học (kể cả Bài 1, 2, 3 đã học thử) đều chuyển sang biểu tượng khóa 🔒 với nhãn *"Đã khóa sau học thử"*. |
+| 3 | Button Thanh toán để tiếp tục học | Button | N/A | N/A | N/A | CTA duy nhất trên giao diện dẫn tới màn hình thanh toán để mở khóa lại khóa học. |
+| 4 | Nút học thử bị vô hiệu hóa | Button | N/A | N/A | N/A | Nút học thử chuyển sang trạng thái disabled: *"Đã sử dụng quyền học thử (1 lần duy nhất)"*. |
 
 #### Acceptance Criteria
 
-- **AC1: Tự động chuyển đổi trạng thái khi hết 7 ngày (System logic)**
+- **AC1: Tự động chuyển đổi trạng thái khi hết 7 ngày không gia hạn thành công (System logic)**
   - **Given** khóa học của học viên đang ở trạng thái `TRIAL_ACTIVE`
-  - **When** thời gian trôi qua đủ 168 giờ (7 ngày) kể từ thời điểm kích hoạt mà học viên chưa thanh toán mua khóa học
-  - **Then** hệ thống tự động cập nhật trạng thái khóa học sang `TRIAL_EXPIRED`.
+  - **When** thời gian trôi qua đủ 168 giờ (7 ngày) kể từ thời điểm kích hoạt và xảy ra một trong các trường hợp: (1) Học viên chủ động bấm hủy gia hạn trước ngày thứ 7, hoặc (2) Cổng thanh toán quét trừ tiền gia hạn tự động thất bại sau 3 lần retry
+  - **Then** hệ thống tự động cập nhật trạng thái khóa học của học viên sang `TRIAL_EXPIRED`.
 - **AC2: Thu hồi toàn bộ quyền truy cập nội dung học thử (Negative path)**
   - **Given** khóa học đã chuyển sang trạng thái `TRIAL_EXPIRED`
-  - **When** học viên truy cập vào khóa học hoặc click vào bất kỳ bài nào (kể cả 3 bài đầu)
-  - **Then** hệ thống chặn hoàn toàn việc xem video, hiển thị cảnh báo `MSG-006`: *"Thời gian học thử 7 ngày của bạn cho khóa học này đã kết thúc. Vui lòng thanh toán để tiếp tục học tập"* và bật modal hướng dẫn thanh toán.
+  - **When** học viên truy cập vào khóa học hoặc click vào bất kỳ bài nào (kể cả 50% thời lượng của Bài 1, 2, 3 trước đó)
+  - **Then** hệ thống chặn hoàn toàn việc phát video, hiển thị cảnh báo `MSG-006`: *"Thời gian học thử 7 ngày của bạn cho khóa học này đã kết thúc. Vui lòng thanh toán để tiếp tục học tập"* và bật modal hướng dẫn thanh toán.
 - **AC3: Không cho phép kích hoạt học thử lần 2 (Business rule)**
   - **Given** khóa học của học viên ở trạng thái `TRIAL_EXPIRED`
   - **When** học viên tải lại trang chi tiết khóa học
-  - **Then** nút *"Học thử 7 ngày miễn phí"* bị ẩn hoàn toàn, chỉ hiển thị nút *"Mua khóa học ngay"*.
-
----
-
-### 3.6. US-PAY-006: Thanh toán mở khóa toàn bộ khóa học trọn đời
-
-**As a** học viên muốn học trọn vẹn kiến thức  
-**I want to** thực hiện thanh toán mua khóa học một lần dễ dàng  
-**So that** tôi mở khóa vĩnh viễn 100% thời lượng toàn bộ bài giảng, nộp bài tập ôn tập và nhận chứng chỉ tốt nghiệp.
-
-#### Bảng mô tả thành phần giao diện
-
-| STT | Tên thành phần | Type | Được chỉnh sửa | Bắt buộc | Giá trị mặc định | Mô tả |
-| :---: | --- | :---: | :---: | :---: | :---: | --- |
-| 1 | Thông tin đơn hàng | Text | N/A | N/A | N/A | Tên khóa học, giá niêm yết, số tiền thanh toán cuối cùng. |
-| 2 | Trường Họ và tên | Text | Yes | Yes | N/A | Tên người mua hiển thị trên hóa đơn và chứng chỉ. Bỏ trống báo **MSG-001**. |
-| 3 | Trường Email | Text | Yes | Yes | N/A | Email nhận biên lai và tài liệu khóa học. Sai cú pháp báo **MSG-003**. |
-| 4 | Phương thức thanh toán | Radio | Yes | Yes | Thẻ quốc tế | Lựa chọn phương thức: Thẻ quốc tế (Visa/Mastercard) hoặc Chuyển khoản QR / Ví điện tử. |
-| 5 | Button Xác nhận thanh toán | Button | N/A | N/A | N/A | Gửi lệnh thanh toán sang cổng thanh toán đối tác. |
-
-#### Acceptance Criteria
-
-- **AC1: Thanh toán thành công và mở khóa 100% nội dung (Happy path)**
-  - **Given** học viên đang ở màn hình thanh toán khóa học
-  - **When** học viên điền đầy đủ thông tin hợp lệ, chọn phương thức thanh toán và hoàn tất giao dịch thành công qua cổng thanh toán
-  - **Then** hệ thống cập nhật trạng thái đơn hàng `PAID`, nâng cấp trạng thái khóa học của học viên sang `ENROLLED`
-  - **And** gỡ bỏ toàn bộ biểu tượng ổ khóa 🔒 trên tất cả các bài học (từ Bài 1 đến hết), mở khóa 100% thời lượng tua video và kích hoạt mục bài tập ôn tập kèm gửi email hóa đơn.
-- **AC2: Bỏ trống trường thông tin bắt buộc (Validation)**
-  - **Given** học viên đang ở form thanh toán
-  - **When** học viên để trống họ tên hoặc email và bấm xác nhận
-  - **Then** hệ thống chặn gửi dữ liệu và hiển thị lỗi `MSG-001`: *"Vui lòng nhập thông tin"*.
-- **AC3: Giao dịch thanh toán bị hủy hoặc thất bại (Negative path)**
-  - **Given** học viên đang thực hiện giao dịch tại cổng thanh toán
-  - **When** giao dịch bị ngân hàng từ chối hoặc học viên bấm hủy thanh toán
-  - **Then** hệ thống hiển thị thông báo thanh toán không thành công, giữ nguyên trạng thái khóa học cũ và cho phép học viên thử lại.
+  - **Then** nút học thử bị vô hiệu hóa hoàn toàn, chỉ hiển thị nút *"Thanh toán để tiếp tục học (399.000đ)"*.
