@@ -26,7 +26,7 @@
 | **US-ENR-003** | **As a** học viên chưa từng học thử khóa học<br>**I want to** xem thông tin quyền lợi học thử 7 ngày và chuyển sang bước liên kết thẻ<br>**So that** tôi chuẩn bị kích hoạt gói trải nghiệm bài giảng thực tế | High (P1) |
 | **US-PAY-004** | **As a** học viên đăng ký trải nghiệm 7 ngày<br>**I want to** nhập thông tin thẻ thanh toán quốc tế (Visa/Mastercard) hợp lệ<br>**So that** hệ thống xác thực thẻ, kích hoạt gói học thử 7 ngày và thiết lập tự động gia hạn sau dùng thử | Must Have (P0) |
 | **US-PLAY-005** | **As a** học viên đang trong thời gian học thử 7 ngày<br>**I want to** xem tối đa 50% thời lượng của 3 bài đầu tiên và nhận thông báo mở khóa khi chạm giới hạn<br>**So that** tôi đánh giá chất lượng bài giảng và cân nhắc nâng cấp toàn bộ khóa học | Must Have (P0) |
-| **US-EXP-006** | **As a** hệ thống ANSERA<br>**I want to** tự động thu hồi toàn bộ quyền xem (kể cả 50% 3 bài đầu) khi hết hạn 7 ngày mà không gia hạn thành công<br>**So that** bảo vệ bản quyền khóa học và ngăn chặn hành vi học thử lặp lại | High (P1) |
+| **US-EXP-006** | **As a** Quản trị viên vận hành nền tảng ANSERA<br>**I want to** hệ thống tự động thu hồi toàn bộ quyền xem (kể cả 50% 3 bài đầu) khi học viên hết hạn 7 ngày mà không gia hạn thành công<br>**So that** bảo vệ bản quyền khóa học và ngăn chặn hành vi học thử lặp lại | High (P1) |
 
 ---
 
@@ -218,8 +218,8 @@
 
 ### 3.6. US-EXP-006: Tự động hết hạn học thử sau 7 ngày & Thu hồi toàn bộ quyền truy cập
 
-**As a** hệ thống ANSERA  
-**I want to** tự động chuyển trạng thái sang hết hạn và khóa toàn bộ nội dung (kể cả 50% của 3 bài đầu) khi hết hạn 7 ngày mà không thanh toán/gia hạn thành công  
+**As a** Quản trị viên vận hành nền tảng ANSERA  
+**I want to** hệ thống tự động chuyển trạng thái sang hết hạn và khóa toàn bộ nội dung (kể cả 50% của 3 bài đầu) khi học viên hết hạn 7 ngày mà không thanh toán/gia hạn thành công  
 **So that** bảo đảm bản quyền nội dung, ngăn chặn trục lợi học thử và thúc đẩy người dùng thanh toán.
 
 #### Bảng mô tả thành phần giao diện
