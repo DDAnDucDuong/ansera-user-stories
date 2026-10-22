@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ansera - Dùng thử miễn phí 7 ngày</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-high": "#e2e7ff",
+            "tertiary-container": "#865400",
+            "error": "#ba1a1a",
+            "on-tertiary": "#ffffff",
+            "outline-variant": "#c3c6d6",
+            "on-secondary": "#ffffff",
+            "secondary-fixed": "#dce4e9",
+            "secondary": "#576065",
+            "on-background": "#131b2e",
+            "on-tertiary-fixed-variant": "#653e00",
+            "surface-container-low": "#f2f3ff",
+            "outline": "#737785",
+            "primary-fixed-dim": "#b2c5ff",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#40484d",
+            "inverse-on-surface": "#eef0ff",
+            "inverse-primary": "#b2c5ff",
+            "primary": "#0040a1",
+            "surface-bright": "#faf8ff",
+            "surface": "#faf8ff",
+            "on-secondary-fixed": "#151d21",
+            "on-primary-container": "#ccd8ff",
+            "on-primary": "#ffffff",
+            "on-primary-fixed-variant": "#0040a1",
+            "tertiary-fixed": "#ffddb8",
+            "surface-variant": "#dae2fd",
+            "on-tertiary-container": "#ffd29e",
+            "primary-fixed": "#dae2ff",
+            "inverse-surface": "#283044",
+            "background": "#faf8ff",
+            "surface-tint": "#0056d2",
+            "surface-dim": "#d2d9f4",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-highest": "#dae2fd",
+            "secondary-fixed-dim": "#bfc8cd",
+            "on-tertiary-fixed": "#2a1700",
+            "on-surface": "#131b2e",
+            "on-secondary-container": "#5c6469",
+            "tertiary-fixed-dim": "#ffb95f",
+            "primary-container": "#0056d2",
+            "on-primary-fixed": "#001847",
+            "secondary-container": "#d9e1e7",
+            "tertiary": "#663f00",
+            "surface-container": "#eaedff",
+            "on-error-container": "#93000a",
+            "on-surface-variant": "#424654",
+            "on-error": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "gutter": "0.75rem",
+            "margin": "1rem",
+            "space-xs": "0.25rem",
+            "space-xl": "1.5rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem"
+          },
+          "fontFamily": {
+            "headline-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "display": ["Inter"],
+            "label-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-sm": ["Inter"],
+            "body-lg": ["Inter"]
+          },
+          "fontSize": {
+            "headline-md": ["18px", {"lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+            "display": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+            "body-md": ["14px", {"lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "headline-sm": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600"}],
+            "headline-lg": ["22px", {"lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+            "body-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .custom-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased font-body-md flex justify-center items-center min-h-screen">
+<!-- Mobile Device Simulation Frame (390px base width) -->
+<div class="relative w-full max-w-[390px] h-[844px] overflow-hidden bg-surface-bright flex flex-col shadow-2xl rounded-[32px] border border-outline-variant">
+<!-- ========================================== -->
+<!-- 1. BACKGROUND CONTEXT: Course Detail Page -->
+<!-- ========================================== -->
+<div class="w-full h-full overflow-y-auto custom-scrollbar flex flex-col select-none filter blur-[1.5px] scale-[0.99] origin-center opacity-85">
+<!-- TopAppBar Component (from Shared Components JSON) -->
+<header class="w-full h-16 flex items-center justify-between px-margin bg-surface-container-lowest border-b border-outline-variant sticky top-0 z-10">
+<div class="flex items-center gap-space-sm">
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container-high transition-transform active:scale-95">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="school" style="font-variation-settings: 'FILL' 1;">school</span>
+<span class="font-headline-lg text-headline-lg text-primary tracking-tight font-bold">Ansera</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-high">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-label-md text-label-md font-bold">
+            D
+          </div>
+</div>
+</header>
+<!-- Background Course Hero Content -->
+<main class="flex-1 flex flex-col pb-20">
+<!-- Hero Banner Container -->
+<div class="bg-surface-container-low px-margin py-space-lg flex flex-col gap-space-sm">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container text-primary text-label-sm font-label-sm uppercase tracking-wider self-start font-semibold">
+            Khoa học Dữ liệu
+          </div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-extrabold leading-snug">
+            Khoa học Dữ liệu và Machine Learning với Python
+          </h1>
+<div class="flex items-center gap-space-sm mt-1">
+<div class="flex items-center gap-1 text-tertiary-container font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.8</span>
+</div>
+<span class="text-outline text-label-md">•</span>
+<span class="text-on-surface-variant text-label-md font-label-md">156,234 học viên</span>
+</div>
+</div>
+<!-- Video Preview Card Mock -->
+<div class="px-margin mt-space-md">
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-inverse-surface border border-outline-variant shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A focused instructor working in a contemporary high-tech data science computer laboratory surrounded by clean glass monitors showing Python analytics code and dynamic gradient charts. The lighting is soft studio illumination with deep blue accents reflecting a calm, professional academic mood matching the blue corporate brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-A-wsGEuJFYFE_yTPpSLeD_x-x2m8OU5eDEJ3e8vJJjueaepFeq06IZd7Bc9nq4noBU8FqUMwErlo3aFOSbziZru_dSHayqT6MwS4YBJe7mQbwYp0jIMViNQISRvWLvsB2L9qtJX5_2y8a0PnXpv61HODi8eK0z9WpwvN7gxZNgFhvyC-VaMVA4iGhLBNXEK9N8ZmrRrkHy9D-lMmdh6Qnb6qIOuo7gXexxC72SuAuw_lWSDpCDKvhE1Fv2hUXDgjfCYFt7ryLIh9"/>
+<div class="absolute inset-0 bg-on-surface/30 flex items-center justify-center">
+<div class="w-12 h-12 rounded-full bg-surface-container-lowest/90 text-primary flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-2xl" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Syllabus Preview Mock -->
+<div class="px-margin mt-space-lg flex flex-col gap-space-md">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Chương trình chuyên nghiệp (4 khóa)</h2>
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-outline-variant flex flex-col gap-space-xs">
+<span class="text-primary font-label-sm text-label-sm font-semibold">Khóa 1</span>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Nền tảng Python cho Data Science</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">4 tuần • 16 giờ học thực hành</span>
+</div>
+</div>
+</main>
+</div>
+<!-- ========================================== -->
+<!-- 2. MODAL OVERLAY & CENTERED POPUP CARD   -->
+<!-- ========================================== -->
+<!-- Dark semi-transparent backdrop overlay with backdrop blur -->
+<div aria-labelledby="modal-headline" aria-modal="true" class="absolute inset-0 z-50 bg-[#0F172A]/70 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300" id="modal-overlay" role="dialog">
+<!-- Centered Floating Modal Popup Card -->
+<div class="relative w-full bg-surface-container-lowest rounded-2xl shadow-2xl border border-outline-variant/60 p-5 flex flex-col animate-[fadeIn_0.25s_ease-out]">
+<!-- Modal Header Row: Title & Close Button -->
+<div class="flex items-center justify-between gap-space-sm pb-1 border-b border-surface-container">
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight" id="modal-headline">
+            Dùng thử miễn phí 7 ngày
+          </h2>
+<button onclick="window.location.href='course-detail.html'" aria-label="Đóng cửa sổ" class="w-8 h-8 rounded-full flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container-low transition-colors duration-150 active:scale-95 cursor-pointer" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="close">close</span>
+</button>
+</div>
+<!-- 4 Key Value Benefits List -->
+<div class="space-y-3.5 my-4">
+<!-- Benefit Item 1 -->
+<div class="flex items-start gap-3">
+<div class="w-7 h-7 rounded-full bg-[#EEF4FF] flex-shrink-0 flex items-center justify-center text-primary-container mt-0.5">
+<span class="material-symbols-outlined text-base font-bold" data-icon="check">check</span>
+</div>
+<div class="flex-1">
+<p class="font-label-lg text-[13.5px] leading-snug font-semibold text-on-surface">
+                Truy cập không giới hạn tất cả các khóa học trong Chứng chỉ Chuyên nghiệp
+              </p>
+<p class="font-body-sm text-[12px] text-secondary leading-relaxed mt-0.5">
+                Xem bài giảng, làm bài tập, tham gia diễn đàn thảo luận và nhiều hơn nữa.
+              </p>
+</div>
+</div>
+<!-- Benefit Item 2 -->
+<div class="flex items-start gap-3">
+<div class="w-7 h-7 rounded-full bg-[#EEF4FF] flex-shrink-0 flex items-center justify-center text-primary-container mt-0.5">
+<span class="material-symbols-outlined text-base font-bold" data-icon="check">check</span>
+</div>
+<div class="flex-1">
+<p class="font-label-lg text-[13.5px] leading-snug font-semibold text-on-surface">
+                Hủy bất cứ lúc nào.
+              </p>
+<p class="font-body-sm text-[12px] text-secondary leading-relaxed mt-0.5">
+                Không có phí phạt - chỉ cần hủy trước khi kết thúc dùng thử nếu không phù hợp với bạn.
+              </p>
+</div>
+</div>
+<!-- Benefit Item 3 -->
+<div class="flex items-start gap-3">
+<div class="w-7 h-7 rounded-full bg-[#EEF4FF] flex-shrink-0 flex items-center justify-center text-primary-container mt-0.5">
+<span class="material-symbols-outlined text-base font-bold" data-icon="check">check</span>
+</div>
+<div class="flex-1">
+<p class="font-label-lg text-[13.5px] leading-snug font-semibold text-on-surface">
+                $20 USD mỗi tháng để tiếp tục học sau khi kết thúc dùng thử
+              </p>
+<p class="font-body-sm text-[12px] text-secondary leading-relaxed mt-0.5">
+                Học nhanh tùy ý - càng học nhanh, bạn càng tiết kiệm nhiều.
+              </p>
+</div>
+</div>
+<!-- Benefit Item 4 -->
+<div class="flex items-start gap-3">
+<div class="w-7 h-7 rounded-full bg-[#EEF4FF] flex-shrink-0 flex items-center justify-center text-primary-container mt-0.5">
+<span class="material-symbols-outlined text-base font-bold" data-icon="check">check</span>
+</div>
+<div class="flex-1">
+<p class="font-label-lg text-[13.5px] leading-snug font-semibold text-on-surface">
+                Nhận chứng chỉ khi hoàn thành sau khi kết thúc dùng thử
+              </p>
+<p class="font-body-sm text-[12px] text-secondary leading-relaxed mt-0.5">
+                Chia sẻ trên hồ sơ, LinkedIn và CV của bạn.
+              </p>
+</div>
+</div>
+</div>
+<!-- Call To Action Area -->
+<div class="pt-1 flex flex-col">
+<button onclick="window.location.href='checkout.html'" class="w-full h-12 rounded-lg bg-primary-container hover:bg-[#0045B0] text-on-primary font-headline-sm text-headline-sm font-bold flex items-center justify-center gap-2 shadow-md transition-all duration-150 active:scale-[0.98] cursor-pointer" type="button">
+<span>Bắt đầu dùng thử miễn phí</span>
+<span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<p class="font-label-sm text-[11px] text-secondary text-center mt-2.5 tracking-tight">
+            Không mất phí trong 7 ngày đầu. Hủy bất kỳ lúc nào.
+          </p>
+</div>
+</div>
+</div>
+</div>
+</body></html>
