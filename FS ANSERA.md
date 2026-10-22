@@ -1,4 +1,4 @@
-# ĐẶC TẢ USER STORIES & ACCEPTANCE CRITERIA (ANSERA PLATFORM)
+﻿# ĐẶC TẢ USER STORIES & ACCEPTANCE CRITERIA (ANSERA PLATFORM)
 **Tác giả:** Duong Duc An  
 **Phiên bản:** 2.1 (Cập nhật mô hình Học thử 7 ngày liên kết thẻ quốc tế, giới hạn 50% thời lượng 3 bài đầu & Thu hồi toàn bộ khi hết hạn)
 
@@ -37,6 +37,18 @@
 **As a** khách truy cập mới chưa có tài khoản trên ANSERA  
 **I want to** đăng ký tài khoản bằng username và mật khẩu cá nhân  
 **So that** tôi sở hữu tài khoản định danh trên nền tảng, lưu trữ lộ trình học và sử dụng các tính năng học tập cá nhân hóa.
+
+![US-AUTH-001_ Homepage khi truy cập vào trang trước khi đăng ký](./H%E1%BB%8Dc%20th%E1%BB%AD%20screen./US-AUTH-001_%20Homepage%20khi%20truy%20c%E1%BA%ADp%20v%C3%A0o%20trang%20tr%C6%B0%E1%BB%9Bc%20khi%20%C4%91%C4%83ng%20k%C3%AD.png)
+
+*US-AUTH-001_ Homepage khi truy cập vào trang trước khi đăng ký*
+
+![US-AUTH-001_ Đăng ký tài khoản học viên mới](./H%E1%BB%8Dc%20th%E1%BB%AD%20screen./US-AUTH-001_%20%C4%90%C4%83ng%20k%C3%BD%20t%C3%A0i%20kho%E1%BA%A3n%20h%E1%BB%8Dc%20vi%C3%AAn%20m%E1%BB%9Bi.png)
+
+*US-AUTH-001_ Đăng ký tài khoản học viên mới*
+
+![US-AUTH-001_ Đăng ký (Lỗi validation MSG-001, MSG-002, MSG-003)](./H%E1%BB%8Dc%20th%E1%BB%AD%20screen./US-AUTH-001_%20%C4%90%C4%83ng%20k%C3%BD%20(L%E1%BB%97i%20validation%20MSG-001,%20MSG-002,%20MSG-003).png)
+
+*US-AUTH-001_ Đăng ký (Lỗi validation MSG-001, MSG-002, MSG-003)*
 
 #### Bảng mô tả thành phần giao diện
 
@@ -80,6 +92,10 @@
 **I want to** xem chi tiết đề cương khóa học, thông tin giảng viên, đánh giá và nhận biết rõ bài nào được học thử 50%  
 **So that** tôi hiểu rõ nội dung, kiến thức đạt được trước khi quyết định trải nghiệm học thử hoặc mua khóa học.
 
+![US-CRS-002_ Chi tiết khóa học (Huy hiệu Học thử 50% & CTA Trải nghiệm 7 ngày)](./H%E1%BB%8Dc%20th%E1%BB%AD%20screen./US-CRS-002_%20Chi%20ti%E1%BA%BFt%20kh%C3%B3a%20h%E1%BB%8Dc%20(Huy%20hi%E1%BB%87u%20H%E1%BB%8Dc%20th%E1%BB%AD%2050%25%20&%20CTA%20Tr%E1%BA%A3i%20nghi%E1%BB%87m%207%20ng%C3%A0y).png)
+
+*US-CRS-002_ Chi tiết khóa học (Huy hiệu Học thử 50% & CTA Trải nghiệm 7 ngày)*
+
 #### Bảng mô tả thành phần giao diện
 
 | STT | Tên thành phần | Type | Được chỉnh sửa | Bắt buộc | Giá trị mặc định | Mô tả |
@@ -116,6 +132,10 @@
 **I want to** mở xem thông tin chi tiết gói học thử 7 ngày và chuyển sang màn hình liên kết thẻ thanh toán  
 **So that** tôi hiểu rõ phạm vi học thử (50% của 3 bài đầu) và chính sách gia hạn trước khi cung cấp thông tin thẻ.
 
+![US-ENR-003_ Modal cam kết trải nghiệm học thử 7 ngày](./H%E1%BB%8Dc%20th%E1%BB%AD%20screen./US-ENR-003_%20Modal%20cam%20k%E1%BA%BFt%20tr%E1%BA%A3i%20nghi%E1%BB%87m%20h%E1%BB%8Dc%20th%E1%BB%AD%207%20ng%C3%A0y.png)
+
+*US-ENR-003_ Modal cam kết trải nghiệm học thử 7 ngày*
+
 #### Bảng mô tả thành phần giao diện
 
 | STT | Tên thành phần | Type | Được chỉnh sửa | Bắt buộc | Giá trị mặc định | Mô tả |
@@ -143,6 +163,18 @@
 **As a** học viên đăng ký trải nghiệm học thử 7 ngày  
 **I want to** nhập thông tin thẻ thanh toán quốc tế (Visa/Mastercard) hợp lệ  
 **So that** tôi hoàn tất xác thực 0đ, kích hoạt quyền học thử 7 ngày và hệ thống tự động gia hạn thuê bao sau 7 ngày nếu tôi không hủy bỏ.
+
+![US-PAY-004_ Liên kết thẻ thanh toán quốc tế & Kích hoạt học thử 7 ngày](./H%E1%BB%8Dc%20th%E1%BB%AD%20screen./US-PAY-004_%20Li%C3%AAn%20k%E1%BA%BFt%20th%E1%BA%BB%20thanh%20to%C3%A1n%20qu%E1%BB%91c%20t%E1%BA%BF%20&%20K%C3%ADch%20ho%E1%BA%A1t%20h%E1%BB%8Dc%20th%E1%BB%AD%207%20ng%C3%A0y.png)
+
+*US-PAY-004_ Liên kết thẻ thanh toán quốc tế & Kích hoạt học thử 7 ngày*
+
+![US-PAY-004_ Điền thẻ thanh toán (Lỗi validation AC2 MSG-001 & AC3 MSG-003)](./H%E1%BB%8Dc%20th%E1%BB%AD%20screen./US-PAY-004_%20%C4%90i%E1%BB%81n%20th%E1%BA%BB%20thanh%20to%C3%A1n%20(L%E1%BB%97i%20validation%20AC2%20MSG-001%20&%20AC3%20MSG-003).png)
+
+*US-PAY-004_ Điền thẻ thanh toán (Lỗi validation AC2 MSG-001 & AC3 MSG-003)*
+
+![US-PAY-004_ Điền thẻ thanh toán (Lỗi thẻ bị từ chối AC4 Gateway Decline)](./H%E1%BB%8Dc%20th%E1%BB%AD%20screen./US-PAY-004_%20%C4%90i%E1%BB%81n%20th%E1%BA%BB%20thanh%20to%C3%A1n%20(L%E1%BB%97i%20th%E1%BA%BB%20b%E1%BB%8B%20t%E1%BB%AB%20ch%E1%BB%91i%20AC4%20Gateway%20Decline).png)
+
+*US-PAY-004_ Điền thẻ thanh toán (Lỗi thẻ bị từ chối AC4 Gateway Decline)*
 
 #### Bảng mô tả thành phần giao diện
 
@@ -184,6 +216,14 @@
 **I want to** xem được 50% thời lượng của 3 bài đầu tiên và hiển thị Paywall khi chạm giới hạn  
 **So that** tôi cảm nhận được chất lượng giảng dạy và quyết định duy trì gói trả phí hoặc mua khóa học.
 
+![US-PLAY-005_ Trình phát video học thử 50% & Chặn tua (Seek Guard)](./H%E1%BB%8Dc%20th%E1%BB%AD%20screen./US-PLAY-005_%20Tr%C3%ACnh%20ph%C3%A1t%20video%20h%E1%BB%8Dc%20th%E1%BB%AD%2050%25%20&%20Ch%E1%BA%B7n%20tua%20(Seek%20Guard).png)
+
+*US-PLAY-005_ Trình phát video học thử 50% & Chặn tua (Seek Guard)*
+
+![US-PLAY-005_ Lớp phủ Paywall Modal khi chạm mốc 50% (MSG-005)](./H%E1%BB%8Dc%20th%E1%BB%AD%20screen./US-PLAY-005_%20L%E1%BB%9Bp%20ph%E1%BB%A7%20Paywall%20Modal%20khi%20ch%E1%BA%A1m%20m%E1%BB%91c%2050%25%20(MSG-005).png)
+
+*US-PLAY-005_ Lớp phủ Paywall Modal khi chạm mốc 50% (MSG-005)*
+
 #### Bảng mô tả thành phần giao diện
 
 | STT | Tên thành phần | Type | Được chỉnh sửa | Bắt buộc | Giá trị mặc định | Mô tả |
@@ -221,6 +261,10 @@
 **As a** Quản trị viên vận hành nền tảng ANSERA  
 **I want to** hệ thống tự động chuyển trạng thái sang hết hạn và khóa toàn bộ nội dung (kể cả 50% của 3 bài đầu) khi học viên hết hạn 7 ngày mà không thanh toán/gia hạn thành công  
 **So that** bảo đảm bản quyền nội dung, ngăn chặn trục lợi học thử và thúc đẩy người dùng thanh toán.
+
+![US-EXP-006_ Chi tiết khóa học khi Hết hạn học thử 7 ngày (MSG-006 & Khóa toàn bộ 🔒)](./H%E1%BB%8Dc%20th%E1%BB%AD%20screen./US-EXP-006_%20Chi%20ti%E1%BA%BFt%20kh%C3%B3a%20h%E1%BB%8Dc%20khi%20H%E1%BA%BFt%20h%E1%BA%A1n%20h%E1%BB%8Dc%20th%E1%BB%AD%207%20ng%C3%A0y%20(MSG-006%20&%20Kh%C3%B3a%20to%C3%A0n%20b%E1%BB%99%20%F0%9F%94%92).png)
+
+*US-EXP-006_ Chi tiết khóa học khi Hết hạn học thử 7 ngày (MSG-006 & Khóa toàn bộ 🔒)*
 
 #### Bảng mô tả thành phần giao diện
 
