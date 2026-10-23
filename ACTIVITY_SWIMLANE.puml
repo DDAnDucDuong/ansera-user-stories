@@ -1,14 +1,14 @@
 ' ==============================================================================
 ' DỰ ÁN: ANSERA LEARNING PLATFORM
 ' TÍNH NĂNG: GÓI HỌC THỬ 7 NGÀY (TRIAL 50% 3 BÀI ĐẦU & LIÊN KẾT THẺ THANH TOÁN)
-' ĐẶC TẢ SƠ ĐỒ HOẠT ĐỘNG PHÂN LÀN (ACTIVITY SWIMLANE DIAGRAMS)
-' TUÂN THỦ: BA-Kit Standard / rules/17-actor-role-definition.md
+' ĐẶC TẢ SƠ ĐỒ HOẠT ĐỘNG PHÂN LÀN (SIMPLIFIED ACTIVITY SWIMLANE: HỌC VIÊN & HỆ THỐNG)
+' QUY ƯỚC: Gộp toàn bộ thành phần kỹ thuật thành 'Hệ thống', chỉ mô tả tương tác UI
 ' ==============================================================================
 
 ' ==============================================================================
-' 1. SƠ ĐỒ TỔNG THỂ END-TO-END SWIMLANE (E2E MASTER ACTIVITY FLOW)
+' 1. SƠ ĐỒ TỔNG THỂ END-TO-END (HỌC VIÊN - HỆ THỐNG)
 ' ==============================================================================
-@startuml E2E_Master_Activity_Swimlane
+@startuml E2E_Master_Swimlane
 skinparam style strictuml
 skinparam shadowing false
 skinparam roundCorner 8
@@ -19,190 +19,107 @@ skinparam ActivityBorderColor #2563EB
 skinparam ActivityDiamondBackgroundColor #EFF6FF
 skinparam ActivityDiamondBorderColor #1D4ED8
 
-|#E0F2FE|Học viên / Khách vãng lai|
-|#FEF3C7|Frontend Web App|
-|#DCFCE7|Backend Platform Service|
-|#FCE7F3|Cổng thanh toán quốc tế|
-|#F3E8FF|Hệ thống Cron định kỳ|
+|#E0F2FE|Học viên|
+|#F1F5F9|Hệ thống|
 
-|Học viên / Khách vãng lai|
+|Học viên|
 start
 :Truy cập trang Chi tiết khóa học;
 if (Đã có tài khoản?) then (Chưa)
-  |Frontend Web App|
+  |Hệ thống|
   :Hiển thị Form Đăng ký tài khoản (US-AUTH-001);
-  |Học viên / Khách vãng lai|
-  :Nhập Username & Password hợp lệ;
-  |Frontend Web App|
-  :Validate client-side & Gửi yêu cầu đăng ký;
-  |Backend Platform Service|
-  :Tạo tài khoản & Cấp phiên JWT Token;
+  |Học viên|
+  :Nhập Username & Mật khẩu;
+  :Nhấn 'Tạo tài khoản';
+  |Hệ thống|
+  :Tự động đăng nhập & Điều hướng về trang khóa học;
 else (Đã đăng nhập)
 endif
 
-|Frontend Web App|
-:Hiển thị giao diện Khóa học (US-CRS-002)
-- Nhãn xanh 'Học thử 50%' cho Bài 1, 2, 3
-- Icon Khóa 🔒 từ Bài 4 trở đi
-- Nút CTA 'Trải nghiệm 7 ngày';
+|Hệ thống|
+:Hiển thị thông tin Khóa học (US-CRS-002):
+- Nhãn 'Học thử 50%' cho Bài 1, 2, 3
+- Biểu tượng Khóa 🔒 cho Bài 4 trở đi
+- Nút bấm 'Trải nghiệm 7 ngày';
 
-|Học viên / Khách vãng lai|
-:Nhấn nút CTA 'Trải nghiệm 7 ngày';
+|Học viên|
+:Nhấn nút 'Trải nghiệm 7 ngày';
 
-|Frontend Web App|
-:Bật Modal cam kết quyền lợi 7 ngày (US-ENR-003);
+|Hệ thống|
+:Hiển thị Modal cam kết quyền lợi học thử (US-ENR-003):
+- Xem 50% thời lượng của 3 bài đầu
+- Học phí 0đ trong 7 ngày
+- Yêu cầu liên kết thẻ & tự động gia hạn sau 7 ngày;
 
-|Học viên / Khách vãng lai|
-:Xem điều khoản & Nhấn 'Bắt đầu học thử';
+|Học viên|
+:Nhấn nút 'Bắt đầu học thử';
 
-|Frontend Web App|
-:Hiển thị Form nhập thẻ quốc tế Visa/Mastercard (US-PAY-004);
+|Hệ thống|
+:Hiển thị Form nhập thẻ quốc tế Visa/Mastercard (US-PAY-004)
+kèm bảng tóm tắt: Hôm nay thanh toán 0 VNĐ;
 
-|Học viên / Khách vãng lai|
-:Nhập thông tin thẻ (Số thẻ, Hạn dùng, CVV, Tên);
+|Học viên|
+:Nhập thông tin thẻ & Nhấn 'Xác thực thẻ & Kích hoạt';
 
-|Frontend Web App|
-:Kiểm tra thuật toán Luhn & Mã hóa dữ liệu;
-:Gửi yêu cầu xác thực thẻ 0đ (Zero-Auth);
-
-|Cổng thanh toán quốc tế|
-:Thực hiện kiểm tra thẻ sống (Pre-authorization);
-if (Thẻ hợp lệ & Được ngân hàng chấp thuận?) then (Có)
-  :Tạo Payment Token bảo mật & Trả về thành công;
-  |Backend Platform Service|
-  :Lưu Payment Token vào ví tài khoản (PCI-DSS);
-  :Kích hoạt gói học thử:
-  - trial_status = ACTIVE
-  - trial_end = Hiện tại + 7 ngày;
-  |Frontend Web App|
-  :Thông báo kích hoạt thành công;
-  :Điều hướng vào Trình phát video Bài 1;
-else (Từ chối / Lỗi)
-  |Frontend Web App|
-  :Báo lỗi MSG-004 (Thẻ bị từ chối);
+|Hệ thống|
+if (Thông tin thẻ có hợp lệ?) then (Hợp lệ)
+  :Hiển thị thông báo kích hoạt thành công gói 7 ngày;
+  :Chuyển hướng mở Trình phát video Bài 1 (US-PLAY-005);
+else (Không hợp lệ / Bị từ chối)
+  :Hiển thị thông báo lỗi tương ứng trên giao diện;
   stop
 endif
 
-|Học viên / Khách vãng lai|
-:Trải nghiệm video học thử (US-PLAY-005);
-|Frontend Web App|
-:Thiết lập mốc chặn tua Seek Guard = 50% thời lượng;
+|Hệ thống|
+:Hiển thị Trình phát video:
+- Vạch giới hạn xem 50% trên thanh tiến trình
+- Nửa sau thanh tiến trình hiển thị icon Khóa 🔒;
+
+|Học viên|
+:Bấm Play xem bài giảng;
+
+|Hệ thống|
 repeat
   :Phát video bài giảng;
-  if (Học viên kéo tua quá 50%?) then (Có)
-    :Seek Guard giật mốc thời gian về 50%;
+  if (Học viên kéo tua quá mốc 50%?) then (Có)
+    :Chặn tua! Kéo mốc phát trở về 50%;
   else (Không)
   endif
-repeat while (Thời gian phát < 50% thời lượng?) is (Đúng)
-->Đạt mốc 50%;
+repeat while (Thời lượng xem < 50%?) is (Đúng)
+->Đạt đúng mốc 50%;
 
-:Tự động TẠM DỪNG (Pause) video ngay lập tức;
-:Kích hoạt Lớp phủ Paywall Modal MSG-005;
+:Tự động tạm dừng (Pause) video ngay lập tức;
+:Hiển thị Lớp phủ Paywall Modal (MSG-005) yêu cầu nâng cấp;
 
-|Học viên / Khách vãng lai|
-if (Quyết định sau khi xem 50%?) then (Xem bài thử khác)
-  |Frontend Web App|
-  :Mở Bài 2 hoặc Bài 3 (Tiếp tục áp dụng giới hạn 50%);
+|Học viên|
+if (Lựa chọn sau khi xem hết 50%?) then (Xem tiếp bài thử khác)
+  |Hệ thống|
+  :Mở Bài 2 hoặc Bài 3 (tiếp tục giới hạn 50%);
 else (Mua toàn bộ khóa học)
-  |Frontend Web App|
+  |Hệ thống|
   :Mở màn hình Thanh toán mua đứt khóa học;
   stop
 endif
 
-|Hệ thống Cron định kỳ|
-:Hết chu kỳ 7 ngày học thử (US-EXP-006);
-:Quét các tài khoản có trial_end <= Thời điểm hiện tại;
-|Backend Platform Service|
-:Gọi Cổng thanh toán trừ tiền gia hạn tự động;
-|Cổng thanh toán quốc tế|
-if (Trừ tiền thành công?) then (Thành công)
-  |Backend Platform Service|
-  :Chuyển trạng thái: ENROLLED_FULL;
-  :Mở khóa vĩnh viễn 100% toàn bộ bài học;
-  stop
-else (Thất bại / Đã hủy dùng thử)
-  |Backend Platform Service|
-  :Chuyển trạng thái: trial_status = EXPIRED;
-  :Thu hồi toàn bộ quyền học thử (kể cả 3 bài đầu);
-  |Frontend Web App|
-  :Khóa toàn bộ giáo trình 🔒;
-  :Hiển thị Banner cảnh báo hết hạn MSG-006;
-  :Chặn toàn bộ Deep-link vào URL video;
-  stop
-endif
+|Hệ thống|
+:Sau 7 ngày: Gói học thử hết hạn (US-EXP-006);
+:Khóa toàn bộ các bài học trong Đề cương (kể cả Bài 1, 2, 3 🔒);
+:Hiển thị Banner cảnh báo đỏ thông báo hết hạn học thử (MSG-006);
+:Đổi nút kêu gọi hành động thành 'Mua ngay để tiếp tục học';
+
+|Học viên|
+:Truy cập lại khóa học & Xem thông báo hết hạn;
+stop
 @enduml
 
 ' ==============================================================================
-' 2. CHI TIẾT SWIMLANE TỪNG USER STORY
+' 2. CHI TIẾT SƠ ĐỒ HOẠT ĐỘNG CHO TỪNG USER STORY
 ' ==============================================================================
 
 ' ------------------------------------------------------------------------------
 ' US-AUTH-001: Đăng ký tài khoản học viên mới
 ' ------------------------------------------------------------------------------
-@startuml US_AUTH_001_Swimlane
-skinparam style strictuml
-skinparam shadowing false
-skinparam roundCorner 8
-skinparam defaultFontName Arial
-skinparam defaultFontSize 12
-
-|#E0F2FE|Học viên (Khách)|
-|#FEF3C7|Frontend UI|
-|#DCFCE7|Backend Auth Service|
-|#F1F5F9|Database|
-
-|Học viên (Khách)|
-start
-:Nhấp nút 'Đăng ký' trên Header;
-|Frontend UI|
-:Hiển thị Form Đăng ký (SCR-AUTH-02);
-
-|Học viên (Khách)|
-repeat
-  :Nhập Username, Mật khẩu, Xác nhận mật khẩu;
-  :Nhấp nút 'Tạo tài khoản';
-  |Frontend UI|
-  :Kiểm tra Validation Client-side;
-  if (Dữ liệu rỗng hoặc sai Regex?) then (Lỗi)
-    :Hiển thị thông báo lỗi inline (MSG-001, MSG-002, MSG-003);
-    |Học viên (Khách)|
-  else (Hợp lệ)
-    |Frontend UI|
-    :Disable nút submit & Hiển thị Spinner;
-    :Gửi POST /api/auth/register;
-    |Backend Auth Service|
-    :Truy vấn kiểm tra Username trùng lặp;
-    |Database|
-    :Query users table;
-    |Backend Auth Service|
-    if (Username đã tồn tại?) then (Trùng lặp)
-      |Frontend UI|
-      :Hiển thị lỗi 409 Conflict MSG-001;
-      :Mở lại nút bấm để học viên sửa tên;
-      |Học viên (Khách)|
-    else (Chưa tồn tại)
-      |Backend Auth Service|
-      :Mã hóa mật khẩu bằng thuật toán Bcrypt;
-      :Ghi bản ghi học viên mới vào DB;
-      |Database|
-      :Insert into users;
-      |Backend Auth Service|
-      :Sinh JWT Token & Thiết lập phiên đăng nhập;
-      |Frontend UI|
-      :Lưu JWT vào Storage an toàn;
-      :Tự động chuyển hướng về trang trước đó;
-      |Học viên (Khách)|
-      :Trở thành Học viên đã định danh;
-      stop
-    endif
-  endif
-repeat while (Đăng ký chưa thành công)
-@enduml
-
-' ------------------------------------------------------------------------------
-' US-CRS-002: Xem chi tiết khóa học & Nhận diện bài học thử
-' ------------------------------------------------------------------------------
-@startuml US_CRS_002_Swimlane
+@startuml US_AUTH_001_Simplified
 skinparam style strictuml
 skinparam shadowing false
 skinparam roundCorner 8
@@ -210,40 +127,80 @@ skinparam defaultFontName Arial
 skinparam defaultFontSize 12
 
 |#E0F2FE|Học viên|
-|#FEF3C7|Frontend Course UI|
-|#DCFCE7|Backend Course Service|
-|#F1F5F9|Database / CDN|
+|#F1F5F9|Hệ thống|
 
 |Học viên|
 start
-:Truy cập đường dẫn khóa học /courses/:slug;
-|Frontend Course UI|
-:Gửi GET /api/courses/:slug/detail;
-|Backend Course Service|
-:Xác định thông tin khóa học & trạng thái Enrollment của User;
-|Database / CDN|
-:Query course, modules, lessons, user_trials;
-|Backend Course Service|
-:Trả về Payload khóa học kèm Trial Policy:
-- Bài 1, 2, 3: is_trial_eligible = true
-- Bài 4+: is_locked = true;
-
-|Frontend Course UI|
-:Render giao diện Chi tiết khóa học:
-- Gắn Huy hiệu xanh 'Học thử 50%' cho 3 bài đầu
-- Gắn Biểu tượng Khóa 🔒 cho các bài còn lại
-- Hiển thị Sidebar với CTA 'Trải nghiệm 7 ngày';
+:Nhấn nút 'Đăng ký' trên thanh điều hướng;
+|Hệ thống|
+:Hiển thị Form Đăng ký tài khoản (SCR-AUTH-02);
 
 |Học viên|
-:Xem cấu trúc giáo trình & giảng viên;
-if (Học viên muốn trải nghiệm?) then (Bấm CTA 'Trải nghiệm 7 ngày')
-  |Frontend Course UI|
-  :Kích hoạt sự kiện mở Modal cam kết (US-ENR-003);
+repeat
+  :Nhập Tên đăng nhập, Mật khẩu, Xác nhận mật khẩu;
+  :Nhấn nút 'Tạo tài khoản';
+  |Hệ thống|
+  if (Các trường có để trống?) then (Có)
+    :Hiển thị thông báo: Vui lòng nhập đầy đủ thông tin;
+    |Học viên|
+  else (Đã điền đủ)
+    |Hệ thống|
+    if (Sai quy cách tên hoặc mật khẩu không khớp?) then (Sai quy cách)
+      :Hiển thị thông báo lỗi tương ứng dưới từng ô nhập:
+      - MSG-001: Tên đăng nhập sai định dạng
+      - MSG-002: Mật khẩu chưa đủ 8 ký tự
+      - MSG-003: Mật khẩu xác nhận không khớp;
+      |Học viên|
+    else (Đúng quy cách)
+      |Hệ thống|
+      if (Tên đăng nhập đã có người sử dụng?) then (Trùng tên)
+        :Hiển thị thông báo: Tên đăng nhập đã tồn tại trong hệ thống;
+        |Học viên|
+      else (Tên hợp lệ)
+        :Tự động hoàn tất đăng ký & Đăng nhập;
+        :Chuyển hướng màn hình về trang khóa học trước đó;
+        |Học viên|
+        :Bắt đầu sử dụng với tư cách Học viên;
+        stop
+      endif
+    endif
+  endif
+repeat while (Chưa đăng ký thành công)
+@enduml
+
+' ------------------------------------------------------------------------------
+' US-CRS-002: Xem chi tiết thông tin khóa học & Nhận diện bài học thử
+' ------------------------------------------------------------------------------
+@startuml US_CRS_002_Simplified
+skinparam style strictuml
+skinparam shadowing false
+skinparam roundCorner 8
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+
+|#E0F2FE|Học viên|
+|#F1F5F9|Hệ thống|
+
+|Học viên|
+start
+:Truy cập vào trang Chi tiết khóa học;
+|Hệ thống|
+:Hiển thị giao diện Chi tiết khóa học:
+- Video trailer & Thông tin giảng viên
+- Đề cương giáo trình:
+  + Gắn huy hiệu xanh 'Học thử 50%' cho Bài 1, 2, 3
+  + Gắn biểu tượng Khóa 🔒 từ Bài 4 trở đi
+- Cột bên phải hiển thị nút CTA 'Trải nghiệm 7 ngày';
+
+|Học viên|
+:Xem danh sách bài học & Quyền lợi;
+if (Thao tác của học viên?) then (Bấm nút 'Trải nghiệm 7 ngày')
+  |Hệ thống|
+  :Hiển thị Modal cam kết trải nghiệm học thử (US-ENR-003);
   stop
-else (Bấm xem thử Bài 1 trực tiếp)
-  |Frontend Course UI|
-  :Nhận diện chưa kích hoạt gói học thử;
-  :Tự động kích hoạt mở Modal cam kết (US-ENR-003);
+else (Bấm trực tiếp vào Bài 1 trên giáo trình)
+  |Hệ thống|
+  :Tự động bật Modal cam kết trải nghiệm học thử (US-ENR-003);
   stop
 endif
 @enduml
@@ -251,7 +208,7 @@ endif
 ' ------------------------------------------------------------------------------
 ' US-ENR-003: Đăng ký trải nghiệm học thử 7 ngày (Modal cam kết)
 ' ------------------------------------------------------------------------------
-@startuml US_ENR_003_Swimlane
+@startuml US_ENR_003_Simplified
 skinparam style strictuml
 skinparam shadowing false
 skinparam roundCorner 8
@@ -259,35 +216,30 @@ skinparam defaultFontName Arial
 skinparam defaultFontSize 12
 
 |#E0F2FE|Học viên|
-|#FEF3C7|Frontend Modal UI|
-|#DCFCE7|Backend Trial Service|
+|#F1F5F9|Hệ thống|
 
 |Học viên|
 start
-:Kích hoạt quy trình trải nghiệm;
-|Frontend Modal UI|
-:Hiển thị MODAL-ENR-01 phủ mờ màn hình:
-1. Quyền xem 50% thời lượng của 3 bài giảng đầu
+:Kích hoạt xem quyền lợi dùng thử;
+|Hệ thống|
+:Bật Modal cam kết hiển thị 3 thông tin chính:
+1. Quyền xem tối đa 50% thời lượng của 3 bài giảng đầu
 2. Chi phí hôm nay: 0 VNĐ (Miễn phí 7 ngày)
-3. Ràng buộc: Cần thẻ thanh toán quốc tế & tự gia hạn sau 7 ngày;
+3. Yêu cầu liên kết thẻ quốc tế & tự động gia hạn sau 7 ngày;
 
 |Học viên|
-if (Quyết định của học viên?) then (Bấm 'Để sau' hoặc nút 'X')
-  |Frontend Modal UI|
+if (Lựa chọn của học viên?) then (Bấm 'Để sau' hoặc icon 'X')
+  |Hệ thống|
   :Đóng modal & Giữ nguyên màn hình chi tiết khóa học;
   stop
-else (Bấm 'Bắt đầu dùng thử')
-  |Frontend Modal UI|
-  :Kiểm tra thông tin thanh toán đã lưu của User;
-  |Backend Trial Service|
-  if (Tài khoản đã có thẻ liên kết hợp lệ?) then (Đã có thẻ)
-    :Tự động tạo bản ghi học thử (trial_status = ACTIVE);
-    |Frontend Modal UI|
-    :Điều hướng thẳng vào Trình phát video (US-PLAY-005);
+else (Bấm nút 'Bắt đầu học thử')
+  |Hệ thống|
+  if (Học viên đã liên kết thẻ trước đó?) then (Đã có thẻ)
+    :Kích hoạt ngay gói học thử;
+    :Điều hướng thẳng vào Trình phát video bài học (US-PLAY-005);
     stop
   else (Chưa có thẻ)
-    |Frontend Modal UI|
-    :Chuyển tiếp sang Màn hình liên kết thẻ (US-PAY-004);
+    :Chuyển sang Màn hình liên kết thẻ thanh toán (US-PAY-004);
     stop
   endif
 endif
@@ -296,7 +248,7 @@ endif
 ' ------------------------------------------------------------------------------
 ' US-PAY-004: Xác thực & Liên kết thẻ thanh toán quốc tế
 ' ------------------------------------------------------------------------------
-@startuml US_PAY_004_Swimlane
+@startuml US_PAY_004_Simplified
 skinparam style strictuml
 skinparam shadowing false
 skinparam roundCorner 8
@@ -304,61 +256,39 @@ skinparam defaultFontName Arial
 skinparam defaultFontSize 12
 
 |#E0F2FE|Học viên|
-|#FEF3C7|Frontend Checkout UI|
-|#DCFCE7|Backend Payment Service|
-|#FCE7F3|Cổng thanh toán (Gateway)|
-|#F1F5F9|Database|
+|#F1F5F9|Hệ thống|
 
 |Học viên|
 start
-:Vào màn hình liên kết thẻ thanh toán;
-|Frontend Checkout UI|
-:Hiển thị Form Thẻ Quốc tế & Tóm tắt: Thanh toán hôm nay 0đ;
+:Chuyển đến màn hình Liên kết thẻ thanh toán;
+|Hệ thống|
+:Hiển thị Form nhập thẻ quốc tế Visa/Mastercard:
+- Các trường: Tên chủ thẻ, Số thẻ, Ngày hết hạn, Mã CVV
+- Bảng tóm tắt: Học phí hôm nay 0 VNĐ;
 
 |Học viên|
 repeat
-  :Nhập Tên chủ thẻ, Số thẻ, Ngày hết hạn, CVV;
-  :Bấm 'Xác thực thẻ & Kích hoạt';
-  |Frontend Checkout UI|
-  :Kiểm tra Validation Client:
-  - Thuật toán Luhn cho số thẻ
-  - Định dạng hạn dùng MM/YY
-  - Mã bảo mật CVV (3 chữ số);
-  if (Form không hợp lệ?) then (Lỗi cú pháp)
-    :Hiển thị lỗi inline đỏ (MSG-001, MSG-002, MSG-003);
+  :Điền thông tin thẻ thanh toán;
+  :Nhấn nút 'Xác thực thẻ & Kích hoạt';
+  |Hệ thống|
+  if (Thông tin nhập sai định dạng / hết hạn / sai CVV?) then (Sai định dạng)
+    :Hiển thị dòng báo lỗi màu đỏ ngay dưới ô nhập liệu:
+    - MSG-001: Số thẻ không hợp lệ
+    - MSG-002: Thẻ đã hết hạn
+    - MSG-003: Mã CVV gồm 3 chữ số;
     |Học viên|
-  else (Hợp lệ)
-    |Frontend Checkout UI|
-    :Khóa Form & Bật Spinner xác thực;
-    :Gửi dữ liệu thẻ đã mã hóa sang Backend;
-    |Backend Payment Service|
-    :Gửi yêu cầu Zero-Auth (Pre-authorization) sang Gateway;
-    |Cổng thanh toán (Gateway)|
-    :Thực hiện bắt tay với Ngân hàng phát hành thẻ;
-    if (Ngân hàng từ chối / Hết tiền / Khóa thẻ?) then (Decline)
-      |Backend Payment Service|
-      :Nhận mã lỗi Decline từ Gateway;
-      |Frontend Checkout UI|
-      :Hiển thị Alert đỏ thông báo thẻ bị từ chối (MSG-004);
-      :Mở khóa lại Form để học viên đổi thẻ;
+  else (Đúng cú pháp)
+    |Hệ thống|
+    :Hiển thị trạng thái đang xử lý xác thực...;
+    if (Thẻ bị ngân hàng từ chối thanh toán?) then (Bị từ chối)
+      :Hiển thị thông báo Alert đỏ: Thẻ bị từ chối / Không đủ điều kiện;
+      :Mở lại nút bấm để học viên nhập thẻ khác;
       |Học viên|
-    else (Thẻ hợp lệ - Chấp thuận)
-      |Cổng thanh toán (Gateway)|
-      :Sinh Payment Token (chuẩn PCI-DSS);
-      |Backend Payment Service|
-      :Lưu Payment Token vào bảng payment_methods;
-      :Tạo bản ghi dùng thử trong bảng enrollments:
-      - trial_status = ACTIVE
-      - trial_start = NOW()
-      - trial_end = NOW() + 7 days
-      - auto_renew = TRUE;
-      |Database|
-      :Insert / Update enrollments & payment_methods;
-      |Frontend Checkout UI|
-      :Hiển thị Toast xanh: 'Kích hoạt thành công gói học thử 7 ngày';
-      :Điều hướng sang Trình phát video Bài 1 (US-PLAY-005);
+    else (Thẻ hợp lệ)
+      :Hiển thị thông báo: Kích hoạt thành công học thử 7 ngày;
+      :Tự động chuyển hướng vào Trình phát video Bài 1 (US-PLAY-005);
       |Học viên|
-      :Bắt đầu trải nghiệm học tập;
+      :Bắt đầu xem bài học;
       stop
     endif
   endif
@@ -366,9 +296,9 @@ repeat while (Chưa kích hoạt thành công)
 @enduml
 
 ' ------------------------------------------------------------------------------
-' US-PLAY-005: Trình phát video 50% & Chặn tua Seek Guard
+' US-PLAY-005: Trình phát video 50% & Chặn tua (Seek Guard)
 ' ------------------------------------------------------------------------------
-@startuml US_PLAY_005_Swimlane
+@startuml US_PLAY_005_Simplified
 skinparam style strictuml
 skinparam shadowing false
 skinparam roundCorner 8
@@ -376,138 +306,91 @@ skinparam defaultFontName Arial
 skinparam defaultFontSize 12
 
 |#E0F2FE|Học viên|
-|#FEF3C7|Player UI (Trình phát)|
-|#BFDBFE|Seek Guard Controller|
-|#DCFCE7|Streaming CDN / Video Server|
+|#F1F5F9|Hệ thống|
 
 |Học viên|
 start
-:Mở bài học trong danh sách 3 bài đầu;
-|Player UI (Trình phát)|
-:Yêu cầu nạp tài nguyên bài giảng;
-|Streaming CDN / Video Server|
-:Cấp Manifest video & Metadata thời lượng (Duration);
-|Player UI (Trình phát)|
-|Seek Guard Controller|
-:Tính toán: MaxAllowedTime = 50% * Duration;
-|Player UI (Trình phát)|
-:Vẽ thanh Seekbar:
-- Nửa đầu hiển thị bình thường
-- Nửa sau hiển thị vạch mờ kèm icon Khóa 🔒;
+:Mở một bài học trong 3 bài học thử đầu tiên;
+|Hệ thống|
+:Hiển thị Trình phát video bài học:
+- Huy hiệu: 'Đang học thử (Giới hạn 50%)'
+- Thanh tiến trình: 50% đầu mở xem, 50% sau bị làm mờ kèm icon 🔒;
 
 |Học viên|
-:Bấm Play xem video;
-|Player UI (Trình phát)|
+:Bấm nút Play để xem bài giảng;
+
+|Hệ thống|
 repeat
   :Phát luồng video theo thời gian thực;
   |Học viên|
-  if (Thao tác của học viên?) then (Xem liên tục)
-    |Player UI (Trình phát)|
-  else (Kéo tua / Click Seekbar)
-    |Seek Guard Controller|
-    if (Vị trí tua > MaxAllowedTime?) then (Vượt quá 50%)
-      :CHẶN TUA!
-      Cưỡng chế đưa current_time về MaxAllowedTime;
-      |Player UI (Trình phát)|
-      :Hiển thị cảnh báo chạm ngưỡng giới hạn;
-    else (<= 50%)
-      |Player UI (Trình phát)|
-      :Cho phép nhảy tới mốc thời gian vừa chọn;
-    endif
+  if (Thao tác của học viên?) then (Xem video bình thường)
+    |Hệ thống|
+  else (Kéo thanh tua hoặc click chuột vượt quá 50%)
+    |Hệ thống|
+    :Chặn thao tác tua!
+    Tự động giật mốc thời gian trở về điểm 50%;
+    :Hiển thị cảnh báo chạm ngưỡng giới hạn;
   endif
-repeat while (current_time < MaxAllowedTime) is (Chưa đạt 50%)
-->Đạt đúng 50% thời lượng;
+repeat while (Thời gian phát < 50% tổng bài giảng?) is (Chưa đạt 50%)
+->Đạt đúng mốc 50%;
 
-|Seek Guard Controller|
-:Phát tín hiệu KHÓA BÀI HỌC;
-|Player UI (Trình phát)|
-:Tự động thực hiện lệnh PAUSE video ngay lập tức;
-:Bật Lớp phủ Paywall Modal (MSG-005) che toàn màn hình;
+|Hệ thống|
+:Tự động tạm dừng (PAUSE) video ngay lập tức;
+:Hiển thị Lớp phủ Paywall Modal (MSG-005) che màn hình video:
+'Bạn đã xem hết 50% bài học thử... Hãy mua trọn khóa để học toàn bộ';
 
 |Học viên|
-if (Lựa chọn tại Modal Paywall?) then (Xem lại từ đầu)
-  |Player UI (Trình phát)|
-  :Reset video về giây 00:00 & Mở lại luồng phát;
+if (Lựa chọn của học viên tại Paywall?) then (Xem lại từ đầu)
+  |Hệ thống|
+  :Đưa video về giây 00:00 & Cho phép phát lại nửa đầu;
   stop
-else (Chuyển sang bài học thử kế tiếp)
-  |Player UI (Trình phát)|
-  :Chuyển sang Bài 2 hoặc Bài 3;
+else (Chuyển sang bài học thử khác)
+  |Hệ thống|
+  :Mở Bài 2 hoặc Bài 3 (tiếp tục áp dụng giới hạn 50%);
   stop
 else (Nâng cấp toàn bộ khóa học)
-  |Player UI (Trình phát)|
-  :Điều hướng sang Màn hình Thanh toán mua đứt;
+  |Hệ thống|
+  :Mở màn hình Thanh toán học phí mua đứt khóa học;
   stop
 endif
 @enduml
 
 ' ------------------------------------------------------------------------------
-' US-EXP-006: Thu hồi quyền học thử sau 7 ngày khi không gia hạn
+' US-EXP-006: Thu hồi quyền học thử sau 7 ngày khi không hoàn tất gia hạn
 ' ------------------------------------------------------------------------------
-@startuml US_EXP_006_Swimlane
+@startuml US_EXP_006_Simplified
 skinparam style strictuml
 skinparam shadowing false
 skinparam roundCorner 8
 skinparam defaultFontName Arial
 skinparam defaultFontSize 12
 
-|#F3E8FF|Hệ thống Cron Scheduler|
-|#DCFCE7|Subscription Service|
-|#FCE7F3|Cổng thanh toán|
-|#F1F5F9|Database|
-|#FEF3C7|Frontend UI|
 |#E0F2FE|Học viên|
+|#F1F5F9|Hệ thống|
 
-|Hệ thống Cron Scheduler|
+|Hệ thống|
 start
-:Kích hoạt Job quét định kỳ mỗi 15 phút;
-:Tìm kiếm các bản ghi trial_status == 'ACTIVE' VÀ trial_end <= NOW();
-|Subscription Service|
-:Truy vấn danh sách học viên hết hạn dùng thử;
-|Database|
-:Select expired trial enrollments;
-|Subscription Service|
-repeat
-  :Lấy thông tin Payment Token của học viên;
-  if (Học viên đã chủ động HỦY gia hạn trước đó?) then (Đã hủy)
-    :Đánh dấu hủy gia hạn;
-  else (Vẫn duy trì tự động gia hạn)
-    :Gửi lệnh trừ tiền tự động (Auto-charge) học phí trọn gói;
-    |Cổng thanh toán|
-    :Xử lý trừ tiền thẻ tín dụng/ghi nợ;
-    if (Trừ tiền thành công?) then (Thành công)
-      |Subscription Service|
-      :Cập nhật enrollment: status = 'ENROLLED_FULL';
-      |Database|
-      :Mở khóa vĩnh viễn 100% toàn bộ khóa học;
-      stop
-    else (Thất bại / Hết hạn mức / Lỗi thẻ)
-      |Subscription Service|
-      :Ghi nhận trừ tiền không thành công;
-    endif
-  endif
+:Sau 7 ngày: Gói học thử hết hạn & Gia hạn không thành công;
+:Thực hiện thu hồi toàn bộ quyền học thử;
 
-  |Subscription Service|
-  :THỰC HIỆN THU HỒI QUYỀN TRUY CẬP:
-  - Cập nhật trial_status = 'EXPIRED'
-  - Đặt access_revoked = TRUE;
-  |Database|
-  :Update enrollments set trial_status = 'EXPIRED';
+|Học viên|
+:Truy cập lại trang Chi tiết khóa học;
+|Hệ thống|
+:Cập nhật toàn bộ giao diện khóa học:
+- Toàn bộ bài giảng trong Đề cương (kể cả Bài 1, 2, 3) đều gắn icon Khóa 🔒
+- Hiển thị Banner cảnh báo màu đỏ (MSG-006):
+  'Thời gian học thử 7 ngày đã kết thúc. Vui lòng thanh toán để mở khóa'
+- Đổi nút hành động chính thành 'Mua ngay để tiếp tục học';
 
-  |Học viên|
-  :Truy cập lại Khóa học hoặc Trình phát video;
-  |Frontend UI|
-  :Kiểm tra trạng thái Enrollment từ Backend;
-  |Subscription Service|
-  :Trả về trạng thái: EXPIRED (0% quyền truy cập);
-  |Frontend UI|
-  :Khóa toàn bộ các bài học trong Đề cương (kể cả Bài 1, 2, 3);
-  :Hiển thị Banner cảnh báo đỏ MSG-006 trên trang chi tiết;
-  if (Học viên cố tình dán link video cũ vào trình duyệt?) then (Deep-link)
-    :Bộ lọc Middleware phát hiện trạng thái EXPIRED;
-    :Chặn hiển thị video & Điều hướng về trang khóa học;
-  else (Xem thông thường)
-  endif
-  :Nút CTA chính chuyển thành: 'Mua ngay để tiếp tục học';
-repeat while (Còn bản ghi hết hạn cần xử lý)
-stop
+|Học viên|
+if (Cố tình dán đường link video cũ vào trình duyệt?) then (Dán link cũ)
+  |Hệ thống|
+  :Chặn hiển thị video;
+  :Điều hướng trở lại trang khóa học kèm thông báo lỗi;
+  stop
+else (Xem thông tin trên trang khóa học)
+  |Hệ thống|
+  :Giữ nguyên trạng thái khóa cho tới khi thanh toán;
+  stop
+endif
 @enduml
